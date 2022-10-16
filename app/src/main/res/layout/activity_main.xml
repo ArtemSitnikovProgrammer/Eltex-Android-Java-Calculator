@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/output"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="453dp"
         android:textAlignment="textEnd"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="180px" />
 
     <LinearLayout
