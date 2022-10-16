@@ -3,11 +3,13 @@ package ru.eltex.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MyActivity";
 
     final String ONE = "1";
     final String TWO = "2";
@@ -56,120 +58,227 @@ public class MainActivity extends AppCompatActivity {
         buttonOne.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + ONE);
+            Log.i(TAG,"Click on button " + ONE);
         });
         buttonTwo.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + TWO);
+            Log.i(TAG,"Click on button " + TWO);
         });
         buttonThree.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + THREE);
+            Log.i(TAG,"Click on button " + THREE);
         });
         buttonFour.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + FOUR);
+            Log.i(TAG,"Click on button " + FOUR);
         });
         buttonFive.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + FIVE);
+            Log.i(TAG,"Click on button " + FIVE);
         });
         buttonSix.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + SIX);
+            Log.i(TAG,"Click on button " + SIX);
         });
         buttonSeven.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + SEVEN);
+            Log.i(TAG,"Click on button " + SEVEN);
         });
         buttonEight.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + EIGHT);
+            Log.i(TAG,"Click on button " + EIGHT);
         });
         buttonNine.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + NINE);
+            Log.i(TAG,"Click on button " + NINE);
         });
         buttonZero.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + ZERO);
+            Log.i(TAG,"Click on button " + ZERO);
         });
         buttonComma.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + COMMA);
+            Log.i(TAG,"Click on button ,");
         });
 
-        buttonAc.setOnClickListener(view -> {
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "";
-        });
-        buttonPlus.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "+";
-        });
+        try {
 
-        buttonMinus.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "-";
-        });
+            buttonAc.setOnClickListener(view -> {
+                ((TextView) findViewById(R.id.output)).setText("");
+                operation = "";
+                Log.i(TAG, "Click on button AC");
+            });
 
-        buttonDivision.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "/";
-        });
+            buttonPlus.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
 
-        buttonMultiplication.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "x";
-        });
-
-        buttonPercent.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "%";
-        });
-
-        buttonRev.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-            a = Integer.valueOf(String.valueOf(out.getText()));
-            ((TextView) findViewById(R.id.output)).setText("");
-            operation = "+/-";
-        });
-
-
-        buttonQe.setOnClickListener(view -> {
-            TextView out = (TextView) findViewById(R.id.output);
-
-            b = Integer.valueOf(String.valueOf(out.getText()));
-
-            switch (operation) {
-                case "+":
-                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a + b));
-                    break;
-                case "-":
-                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a - b));
-                    break;
-                case "x":
-                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a * b));
-                    break;
-                case "/":
-                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a / b));
-                    break;
-                default:
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new NullPointerException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    a = Integer.valueOf(String.valueOf(out.getText()));
                     ((TextView) findViewById(R.id.output)).setText("");
-            }
+                    operation = "+";
+                    Log.i(TAG, "Click on button +");
+                }
+            });
 
-        });
+            buttonMinus.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new ArithmeticException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    a = Integer.valueOf(String.valueOf(out.getText()));
+                    ((TextView) findViewById(R.id.output)).setText("");
+                    operation = "-";
+                    Log.i(TAG, "Click on button -");
+                }
+            });
 
+            buttonDivision.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new ArithmeticException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    a = Integer.valueOf(String.valueOf(out.getText()));
+                    ((TextView) findViewById(R.id.output)).setText("");
+                    operation = "/";
+                    Log.i(TAG, "Click on button /");
+                }
+            });
+
+            buttonMultiplication.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new ArithmeticException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    a = Integer.valueOf(String.valueOf(out.getText()));
+                    ((TextView) findViewById(R.id.output)).setText("");
+                    operation = "x";
+                    Log.i(TAG, "Click on button x");
+                }
+            });
+
+            buttonPercent.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new ArithmeticException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    //a = Integer.valueOf(String.valueOf(out.getText()));
+                    //((TextView) findViewById(R.id.output)).setText(String.valueOf(a/100));
+                    operation = "%";
+                    Log.i(TAG, "Click on button %");
+                    Log.e(TAG, "Method is not working yet");
+                }
+            });
+
+            buttonRev.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+                if (out.getText().equals("")) {
+                    // пустая строка может нарушить в дальнейшем работу нашей программы
+                    //throw new ArithmeticException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+                    //a = Integer.valueOf(String.valueOf(out.getText()));
+                    //((TextView) findViewById(R.id.output)).setText("");
+                    operation = "+/-";
+                    Log.i(TAG, "Click on button +/-");
+                    Log.e(TAG, "Method is not working yet");
+                }
+            });
+
+
+            buttonQe.setOnClickListener(view -> {
+                TextView out = (TextView) findViewById(R.id.output);
+
+                if (out.getText().equals("")) {
+                    // мы решили, что пустая строка может нарушить в дальнейшем работу нашей программы, например, на результате этого метода нам надо вызывать метод substring(1,2), поэтому мы вынуждены прервать выполнение программы с генерацией своего типа исключения MyException с помощью throw
+                    //throw new NullPointerException("String can not be empty!");
+                    Log.e(TAG, "String can not be empty!");
+                }else {
+
+                    b = Integer.valueOf(String.valueOf(out.getText()));
+
+                    switch (operation) {
+                        case "+":
+                            ((TextView) findViewById(R.id.output)).setText(String.valueOf(a += b));
+                            break;
+                        case "-":
+                            ((TextView) findViewById(R.id.output)).setText(String.valueOf(a -= b));
+                            break;
+                        case "x":
+                            ((TextView) findViewById(R.id.output)).setText(String.valueOf(a *= b));
+                            break;
+                        case "/":
+                            ((TextView) findViewById(R.id.output)).setText(String.valueOf(a /= b));
+                            break;
+                        default:
+                            ((TextView) findViewById(R.id.output)).setText("");
+                            Log.e(TAG, "Click on button " + operation + ", operation not implemented");
+                    }
+                    Log.i(TAG, "Click on button =, operation result " + operation);
+                }
+            });
+
+        }catch (AbstractMethodError e){
+            System.out.println(e.getMessage());
+        }
+
+        Log.d(TAG,"Run method onCreate()");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG,"Run method onStart()");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG,"Run method onResum()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG,"Run method onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG,"Run method onStop()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG,"Run method onRestart()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG,"Run method onDestroy()");
+    }
 }
