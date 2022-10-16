@@ -7,25 +7,45 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Класс приложения калькулятор
+ * @autor a.sitnikov
+ * @version v1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /** Поле тег для Log с названием класса */
     private static final String TAG = "MyActivity";
 
+    /** Поле цифра 1 */
     final String ONE = "1";
+    /** Поле цифра 2 */
     final String TWO = "2";
+    /** Поле цифра 3 */
     final String THREE = "3";
+    /** Поле цифра 4 */
     final String FOUR = "4";
+    /** Поле цифра 5 */
     final String FIVE = "5";
+    /** Поле цифра 6 */
     final String SIX = "6";
+    /** Поле цифра 7 */
     final String SEVEN = "7";
+    /** Поле цифра 8 */
     final String EIGHT = "8";
+    /** Поле цифра 9 */
     final String NINE = "9";
+    /** Поле цифра 0 */
     final String ZERO = "0";
+    /** Поле знак запятая */
     final String COMMA = ",";
 
+    /** Поле типа операции */
     String operation;
 
+    /** Поле первой переменной */
     Integer a = 0;
+    /** Поле второй переменной */
     Integer b = 0;
 
     @Override
@@ -34,10 +54,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonOne = (Button) findViewById(R.id.buttonOne);
+        /** Поле кнопки два */
         Button buttonTwo = (Button) findViewById(R.id.buttonTwo);
+        /** Поле кнопки три */
         Button buttonThree = (Button) findViewById(R.id.buttonThree);
+        /** Поле кнопки четыре */
         Button buttonFour = (Button) findViewById(R.id.buttonFour);
+        /** Поле кнопки пять */
         Button buttonFive = (Button) findViewById(R.id.buttonFive);
+        /** Поле кнопки один */
         Button buttonSix = (Button) findViewById(R.id.buttonSix);
         Button buttonSeven = (Button) findViewById(R.id.buttonSeven);
         Button buttonEight = (Button) findViewById(R.id.buttonEight);
@@ -54,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonComma = (Button) findViewById(R.id.buttonComma);
         Button buttonAc = (Button) findViewById(R.id.buttonAc);
 
-
+        /** Блок Методов обработки нажатия кнопок с цифрами */
         buttonOne.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + ONE);
@@ -111,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG,"Click on button ,");
         });
 
+        /** Блок Методов обработки нажатия кнопок с операциями */
         try {
-
             buttonAc.setOnClickListener(view -> {
                 ((TextView) findViewById(R.id.output)).setText("");
                 operation = "";
@@ -246,36 +271,42 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"Run method onCreate()");
     }
 
+    /** Метод запуска программы */
     @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG,"Run method onStart()");
     }
 
+    /** Метод возобновления активности программы */
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG,"Run method onResum()");
+        Log.d(TAG,"Run method onResume()");
     }
 
+    /** Метод приостановки активности программы */
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(TAG,"Run method onPause()");
     }
 
+    /** Метод остановки программы */
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(TAG,"Run method onStop()");
     }
 
+    /** Метод перезапуска программы */
     @Override
     protected void onRestart() {
         super.onRestart();
         Log.d(TAG,"Run method onRestart()");
     }
 
+    /** Метод полного закрытия программы */
     @Override
     protected void onDestroy() {
         super.onDestroy();
