@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     final String EIGHT = "8";
     final String NINE = "9";
     final String ZERO = "0";
+    final String COMMA = ",";
+
+    String operation;
 
     Integer a = 0;
     Integer b = 0;
@@ -51,10 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         buttonOne.setOnClickListener(view -> {
-           TextView out = (TextView) findViewById(R.id.output);
+            TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + ONE);
         });
-
         buttonTwo.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + TWO);
@@ -91,29 +93,80 @@ public class MainActivity extends AppCompatActivity {
             TextView out = (TextView) findViewById(R.id.output);
             ((TextView) findViewById(R.id.output)).setText(out.getText() + ZERO);
         });
+        buttonComma.setOnClickListener(view -> {
+            TextView out = (TextView) findViewById(R.id.output);
+            ((TextView) findViewById(R.id.output)).setText(out.getText() + COMMA);
+        });
 
+        buttonAc.setOnClickListener(view -> {
+            ((TextView) findViewById(R.id.output)).setText("");
+            operation = "";
+        });
         buttonPlus.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
-
             a = Integer.valueOf(String.valueOf(out.getText()));
-
             ((TextView) findViewById(R.id.output)).setText("");
+            operation = "+";
         });
 
         buttonMinus.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
-
             a = Integer.valueOf(String.valueOf(out.getText()));
-
             ((TextView) findViewById(R.id.output)).setText("");
+            operation = "-";
         });
+
+        buttonDivision.setOnClickListener(view -> {
+            TextView out = (TextView) findViewById(R.id.output);
+            a = Integer.valueOf(String.valueOf(out.getText()));
+            ((TextView) findViewById(R.id.output)).setText("");
+            operation = "/";
+        });
+
+        buttonMultiplication.setOnClickListener(view -> {
+            TextView out = (TextView) findViewById(R.id.output);
+            a = Integer.valueOf(String.valueOf(out.getText()));
+            ((TextView) findViewById(R.id.output)).setText("");
+            operation = "x";
+        });
+
+        buttonPercent.setOnClickListener(view -> {
+            TextView out = (TextView) findViewById(R.id.output);
+            a = Integer.valueOf(String.valueOf(out.getText()));
+            ((TextView) findViewById(R.id.output)).setText("");
+            operation = "%";
+        });
+
+        buttonRev.setOnClickListener(view -> {
+            TextView out = (TextView) findViewById(R.id.output);
+            a = Integer.valueOf(String.valueOf(out.getText()));
+            ((TextView) findViewById(R.id.output)).setText("");
+            operation = "+/-";
+        });
+
 
         buttonQe.setOnClickListener(view -> {
             TextView out = (TextView) findViewById(R.id.output);
 
             b = Integer.valueOf(String.valueOf(out.getText()));
 
-            ((TextView) findViewById(R.id.output)).setText(String.valueOf(a + b));
+            switch (operation) {
+                case "+":
+                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a + b));
+                    break;
+                case "-":
+                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a - b));
+                    break;
+                case "x":
+                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a * b));
+                    break;
+                case "/":
+                    ((TextView) findViewById(R.id.output)).setText(String.valueOf(a / b));
+                    break;
+                default:
+                    ((TextView) findViewById(R.id.output)).setText("");
+            }
+
         });
 
     }
